@@ -16,7 +16,7 @@
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█<br>
 </p>
 
-##Info
+## Info
 My repository for BIS 15L, including all labs and homework.
 
 ## Contact / Email
