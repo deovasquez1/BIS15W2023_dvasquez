@@ -1,0 +1,88 @@
+---
+title: "dummy"
+output: html_document
+date: "2023-01-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dummy Plant Experiment matrix 1
+1. Input plant heights
+```{r}
+H_plant_1 <- 30.7
+H_plant_2 <- 37.6
+H_plant_3 <- 28.4
+H_plant_4 <- NA
+H_plant_5 <- 33.2
+```
+
+```{r}
+plant_heights<- c(H_plant_1, H_plant_2, H_plant_3, H_plant_4, H_plant_5)
+plant_heights
+```
+
+##2. Input plant masses
+
+```{r}
+Ma_plant_1 <- 4
+Ma_plant_2 <- 5.2
+Ma_plant_3 <- 3.7
+Ma_plant_4 <- NA
+Ma_plant_5 <- 4.6
+```
+```{r}
+plant_masses <- c(Ma_plant_1, Ma_plant_2, Ma_plant_3, Ma_plant_4, Ma_plant_5)
+plant_masses
+```
+
+##3. Create a matrix with two columns for each plant
+
+```{r}
+plant_matrix <- matrix(plant_heights, nrow = 5, byrow = T)
+plant_matrix
+```
+
+```{r}
+all_plant_matrix <- cbind(plant_matrix, plant_masses)
+all_plant_matrix
+```
+
+##4. Name each column and row accordingly 
+
+```{r}
+plant_names <- c("plant 1", "plant 2", "plant 3", "plant 4", "plant 5")
+plant_names
+```
+
+```{r}
+rownames(all_plant_matrix) <- plant_names
+all_plant_matrix
+```
+
+```{r}
+measurments <- c("height", "mass")
+measurments
+```
+
+```{r}
+colnames(all_plant_matrix) <- measurments
+all_plant_matrix
+```
+
+##5. Calculate Means
+#Remember to remove the NA in the matrix
+
+```{r}
+plant_averages <- colMeans(all_plant_matrix, na.rm=T)
+plant_averages
+```
+
+##6. Add Means to the matrix
+
+```{r}
+plant_experiment_matrix_final <- rbind(all_plant_matrix, plant_averages)
+plant_experiment_matrix_final
+```
+
