@@ -1,0 +1,63 @@
+---
+title: "palmerpenguins"
+author: "Deon Vasquez"
+date: "2023-01-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Palmer Penguins
+
+#1
+```{r}
+library("tidyverse")
+library("palmerpenguins")
+```
+
+```{r}
+palmerpenguins::
+
+```
+```{r}
+penguins <- palmerpenguins::penguins
+penguins
+```
+#2.
+```{r}
+dim(penguins)
+```
+
+#3.
+```{r}
+colnames(penguins)
+```
+
+#4.
+```{r}
+nrow(penguins)
+```
+
+#5.
+```{r}
+vect_pen_bodyma <- c(penguins$body_mass_g)
+vect_pen_bodyma
+```
+
+```{r}
+avg_pen_bodyma <- mean(vect_pen_bodyma)
+avg_pen_bodyma
+```
+
+```{r}
+anyNA(vect_pen_bodyma)
+```
+
+```{r}
+new_avg_pen_bodyma <- mean(vect_pen_bodyma, na.rm = T)
+new_avg_pen_bodyma
+```
+
+The average body mass of the penguins is 4201.754 grams. 
