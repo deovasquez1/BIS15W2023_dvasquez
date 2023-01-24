@@ -63,7 +63,7 @@ Using the `!` operator allows for the exclusion of specific observations.
 filter(fish, lakeid != "AL")
 ```
 
-## Using `filter()` with multiple observations  
+## Using `filter()` with multipfle observations  
 Filtering multiple values within the same variable requires the `%in%` [operator](https://www.tutorialspoint.com/r/r_operators.htm).    
 ```{r}
 filter(fish, length %in% c(167, 175))
