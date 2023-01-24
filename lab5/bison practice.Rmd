@@ -1,0 +1,80 @@
+1. 
+```{r}
+bison <- readr::read_csv("data/bison.csv")
+bison
+```
+
+2.
+```{r}
+dim(bison)
+```
+
+```{r}
+str(bison)
+```
+
+For efficiency, use glimpse:
+```{r}
+glimpse(bison)
+```
+
+
+
+3. 
+```{r}
+new_bison <- select(bison, "data_code","animal_code", "animal_sex", "animal_weight", "animal_yob")
+new_bison
+```
+4.
+```{r}
+eighties_bison <- filter(new_bison, animal_yob>= 1980 & animal_yob <= 1990)
+eighties_bison
+```
+5.
+males:
+```{r}
+male_eighties_bison <- filter(eighties_bison, animal_sex == "M")
+male_eighties_bison
+```
+```{r}
+nrow(male_eighties_bison)
+```
+There were 21 male bisons from 1980 - 1990. 
+
+females:
+```{r}
+female_eighties_bison <- filter(eighties_bison, animal_sex == "F")
+female_eighties_bison
+```
+```{r}
+nrow(female_eighties_bison)
+```
+There were 414 female bisons between 1980 - 1990.
+
+For efficiency, use table:
+```{r}
+table(eighties_bison$animal_sex)
+```
+
+
+#6. 
+males weight:
+```{r}
+vect_m_eighties_bison <- male_eighties_bison$animal_weight
+vect_m_eighties_bison
+```
+
+```{r}
+mean(vect_m_eighties_bison, na.rm = T)
+```
+
+female weight:
+```{r}
+vect_f_eighties_bison <- female_eighties_bison$animal_weight
+vect_f_eighties_bison
+```
+
+```{r}
+mean(vect_f_eighties_bison, na.rm = T)
+```
+On average, male bisons were larger between 1980 - 1990. 
