@@ -184,7 +184,7 @@ snakes
 ```{r}
 arrange(snakes, -desc(mean.hra.m2))
 ```
-The Bitis Scheneideri has the smallest homerange out of all the snakes. It's in the 'viperidae' family. On Wikipedia, the species habitat are the coastal sand dunes in Namibia. The snake is venomous, with a report that the venom causes pain, swelling, discoloration, and oozing. But the person who was bit recovered after 2 weeks. Good for them!
+The Bitis Scheneideri has the smallest homerange out of all the snakes. It's in the 'viperidae' family. On Wikipedia, the species habitat are the coastal sand dunes in Namibia. The snake is venomous, with a report that the venom causes pain, swelling, discoloration, and oozing. But the person who was bit recovered after 2 weeks. Good for them! lol!
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
