@@ -2124,20 +2124,23 @@ durability, and super strength?</li>
 <li>Pick your favorite superhero and let’s see their powers!</li>
 </ol>
 <pre class="r"><code>doctor_doom &lt;- superhero_powers %&gt;% 
-  filter(hero_names == &quot;Doctor Doom&quot;)
-doctor_doom</code></pre>
-<pre><code>## # A tibble: 1 × 168
-##   hero_…¹ agility accel…² lante…³ dimen…⁴ cold_…⁵ durab…⁶ stealth energ…⁷ flight
-##   &lt;chr&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt; 
-## 1 Doctor… FALSE   FALSE   FALSE   FALSE   FALSE   TRUE    FALSE   FALSE   TRUE  
-## # … with 158 more variables: danger_sense &lt;lgl&gt;, underwater_breathing &lt;lgl&gt;,
-## #   marksmanship &lt;lgl&gt;, weapons_master &lt;lgl&gt;, power_augmentation &lt;lgl&gt;,
-## #   animal_attributes &lt;lgl&gt;, longevity &lt;lgl&gt;, intelligence &lt;lgl&gt;,
-## #   super_strength &lt;lgl&gt;, cryokinesis &lt;lgl&gt;, telepathy &lt;lgl&gt;,
-## #   energy_armor &lt;lgl&gt;, energy_blasts &lt;lgl&gt;, duplication &lt;lgl&gt;,
-## #   size_changing &lt;lgl&gt;, density_control &lt;lgl&gt;, stamina &lt;lgl&gt;,
-## #   astral_travel &lt;lgl&gt;, audio_control &lt;lgl&gt;, dexterity &lt;lgl&gt;, …</code></pre>
-<p>I could not find a ‘filter’ function for columns :(</p>
+  filter(hero_names == &quot;Doctor Doom&quot;) %&gt;% 
+  select_if(all_vars(.==&quot;TRUE&quot;))</code></pre>
+<pre><code>## Warning: The `.predicate` argument of `select_if()` can&#39;t contain quosures. as of dplyr
+## 0.8.3.
+## ℹ Please use a one-sided formula, a function, or a function name.
+## ℹ The deprecated feature was likely used in the base package.
+##   Please report the issue to the authors.</code></pre>
+<pre class="r"><code>doctor_doom</code></pre>
+<pre><code>## # A tibble: 1 × 15
+##   durab…¹ flight super…² energ…³ stamina astra…⁴ super…⁵ weapo…⁶ elect…⁷ telep…⁸
+##   &lt;lgl&gt;   &lt;lgl&gt;  &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;   &lt;lgl&gt;  
+## 1 TRUE    TRUE   TRUE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE   
+## # … with 5 more variables: magic &lt;lgl&gt;, dimensional_travel &lt;lgl&gt;,
+## #   summoning &lt;lgl&gt;, force_fields &lt;lgl&gt;, time_travel &lt;lgl&gt;, and abbreviated
+## #   variable names ¹​durability, ²​super_strength, ³​energy_blasts,
+## #   ⁴​astral_travel, ⁵​super_speed, ⁶​weapon_based_powers, ⁷​electrokinesis,
+## #   ⁸​teleportation</code></pre>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>

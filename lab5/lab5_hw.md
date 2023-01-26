@@ -719,25 +719,34 @@ superhero_powers %>%
 
 ```r
 doctor_doom <- superhero_powers %>% 
-  filter(hero_names == "Doctor Doom")
+  filter(hero_names == "Doctor Doom") %>% 
+  select_if(all_vars(.=="TRUE"))
+```
+
+```
+## Warning: The `.predicate` argument of `select_if()` can't contain quosures. as of dplyr
+## 0.8.3.
+## ℹ Please use a one-sided formula, a function, or a function name.
+## ℹ The deprecated feature was likely used in the base package.
+##   Please report the issue to the authors.
+```
+
+```r
 doctor_doom
 ```
 
 ```
-## # A tibble: 1 × 168
-##   hero_…¹ agility accel…² lante…³ dimen…⁴ cold_…⁵ durab…⁶ stealth energ…⁷ flight
-##   <chr>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl> 
-## 1 Doctor… FALSE   FALSE   FALSE   FALSE   FALSE   TRUE    FALSE   FALSE   TRUE  
-## # … with 158 more variables: danger_sense <lgl>, underwater_breathing <lgl>,
-## #   marksmanship <lgl>, weapons_master <lgl>, power_augmentation <lgl>,
-## #   animal_attributes <lgl>, longevity <lgl>, intelligence <lgl>,
-## #   super_strength <lgl>, cryokinesis <lgl>, telepathy <lgl>,
-## #   energy_armor <lgl>, energy_blasts <lgl>, duplication <lgl>,
-## #   size_changing <lgl>, density_control <lgl>, stamina <lgl>,
-## #   astral_travel <lgl>, audio_control <lgl>, dexterity <lgl>, …
+## # A tibble: 1 × 15
+##   durab…¹ flight super…² energ…³ stamina astra…⁴ super…⁵ weapo…⁶ elect…⁷ telep…⁸
+##   <lgl>   <lgl>  <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>   <lgl>  
+## 1 TRUE    TRUE   TRUE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE   
+## # … with 5 more variables: magic <lgl>, dimensional_travel <lgl>,
+## #   summoning <lgl>, force_fields <lgl>, time_travel <lgl>, and abbreviated
+## #   variable names ¹​durability, ²​super_strength, ³​energy_blasts,
+## #   ⁴​astral_travel, ⁵​super_speed, ⁶​weapon_based_powers, ⁷​electrokinesis,
+## #   ⁸​teleportation
 ```
 
-I could not find a 'filter' function for columns :(
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
