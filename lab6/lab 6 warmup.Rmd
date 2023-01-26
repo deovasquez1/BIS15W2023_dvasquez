@@ -1,0 +1,64 @@
+1. What is a pipe? Why are they useful in R?
+
+A pipe allows to create a series of functions, ultimately to combine the series into one function. They're useful so we don't have to continously make a new function and instead create a series. 
+
+2. What is the shortcut for making a pipe?
+
+mac: cmd + shift + M
+pc: ctrl + shift + M 
+
+3. What is the difference between `select`, `filter`, and `mutate`?
+
+Select are for columns
+Filter are for rows
+Mutate is to create a new variable/column from an operation on one or more columns. 
+
+4. What are the logistics of midterm 1?
+
+There are 35 points and 12 questions on the midterm. We are allowed to use anything besides GitHub. There are 2 sections, the first 50 mins is solo and the second 50 minutes is group work. At the end of the 50 minutes, the work will be uploaded to GitHub and this part is worth 5 / 35 pts and is based on effort. The rest of the 30 pts is based on accuracy. The exam is on Tue. 1/31 from 12:10pm - 2:00pm
+
+---
+
+1. Open the data `ecs21351-sup-0003-SupplementS1.csv`
+```{r}
+library("janitor")
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+ecs_data <- readr::read_csv("data/ecs21351-sup-0003-SupplementS1.csv", skip = 2)
+```
+
+
+2. Clean the names of the variables
+
+
+```{r}
+ecs_data <- janitor::clean_names(ecs_data)
+```
+
+3. Explore the data using a function of your choice
+
+```{r}
+glimpse(ecs_data)
+```
+
+
+4. Are there more veggie, omni, insecivore, or nectar feeders in the data?
+
+```{r}
+table(ecs_data$diet)
+```
+There are more omnivores.
+
+5. Which families are Veggie?
+```{r}
+ecs_data %>% 
+  filter(diet == "Vegetation") %>% 
+  select(family, diet) %>% 
+  tabyl(diet)
+```
+
