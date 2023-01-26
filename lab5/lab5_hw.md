@@ -1,5 +1,6 @@
 ---
 title: "dplyr Superhero"
+author: "Deon Vasquez"
 date: "2023-01-26"
 output:
   html_document: 
@@ -305,13 +306,13 @@ tabyl(good_guys, race)
 ##      God / Eternal   6 0.012096774   0.021505376
 ##             Gungan   1 0.002016129   0.003584229
 ##              Human 148 0.298387097   0.530465950
+##    Human / Altered   2 0.004032258   0.007168459
+##     Human / Cosmic   2 0.004032258   0.007168459
+##  Human / Radiation   8 0.016129032   0.028673835
 ##         Human-Kree   2 0.004032258   0.007168459
 ##      Human-Spartoi   1 0.002016129   0.003584229
 ##       Human-Vulcan   1 0.002016129   0.003584229
 ##    Human-Vuldarian   1 0.002016129   0.003584229
-##    Human / Altered   2 0.004032258   0.007168459
-##     Human / Cosmic   2 0.004032258   0.007168459
-##  Human / Radiation   8 0.016129032   0.028673835
 ##      Icthyo Sapien   1 0.002016129   0.003584229
 ##            Inhuman   4 0.008064516   0.014336918
 ##    Kakarantharaian   1 0.002016129   0.003584229
