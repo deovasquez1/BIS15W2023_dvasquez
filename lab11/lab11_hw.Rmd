@@ -187,6 +187,23 @@ gapminder2 %>%
   labs(title="GDPperCap vs Year Between Top 5 Largest Growth Countries Since 1952")
 ```
 **10. Make one plot of your choice that uses faceting!**
+```{r}
+gapminder2 %>% 
+  filter(year == 1952) %>% 
+  ggplot(aes(x= continent, y= lifeExp, fill = continent))+
+  geom_boxplot()+
+  labs(title = "Distribution Population between Continents in 1952")
+```
+
+```{r}
+gapminder2 %>% 
+  filter(year == 2007) %>% 
+  ggplot(aes(x= continent, y= lifeExp, fill = continent))+
+  geom_boxplot()+
+  labs(title = "Distribution Population between Continents in 2007")
+```
+
+
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 
