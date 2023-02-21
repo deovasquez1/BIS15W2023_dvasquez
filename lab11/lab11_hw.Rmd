@@ -28,7 +28,7 @@ library(naniar)
 ``` 
 
 ## Resources
-The idea for this assignment came from [Rebecca Barter's](http://www.rebeccabarter.com/blog/2017-11-17-ggplot2_tutorial/) ggplot tutorial so if you get stuck this is a good place to have a look.  
+The ide+ASa for this assignment came from [Rebecca Barter's](http://www.rebeccabarter.com/blog/2017-11-17-ggplot2_tutorial/) ggplot tutorial so if you get stuck this is a good place to have a look.  
 
 ## Gapminder
 For this assignment, we are going to use the dataset [gapminder](https://cran.r-project.org/web/packages/gapminder/index.html). Gapminder includes information about economics, population, and life expectancy from countries all over the world. You will need to install it before use. This is the same data that we will use for midterm 2 so this is good practice.
@@ -42,22 +42,150 @@ The questions below are open-ended and have many possible solutions. Your approa
 
 **1. Use the function(s) of your choice to get an idea of the overall structure of the data frame, including its dimensions, column names, variable classes, etc. As part of this, determine how NA's are treated in the data.**  
 
+```{r}
+gapminder
+```
+
+```{r}
+gapminder<- gapminder
+```
+```{r}
+summary(gapminder)
+```
+```{r}
+names(gapminder)
+```
+```{r}
+naniar::miss_var_summary(gapminder)
+```
+```{r}
+anyNA(gapminder)
+```
+
+
 **2. Among the interesting variables in gapminder is life expectancy. How has global life expectancy changed between 1952 and 2007?**
 
-**3. How do the distributions of life expectancy compare for the years 1952 and 2007?**
+```{r}
+gapminder %>% 
+  filter(year >= 1952 & year <= 2007) %>% 
+  arrange(year)
+```
+```{r}
+gapminder2 <- 
+  gapminder %>% mutate(year=as_factor(year))
+```
 
+
+```{r}
+gapminder %>% 
+  filter(year >= 1952 & year <= 2007) %>% 
+  arrange(year) %>% 
+  ggplot(aes(x=year, y= lifeExp ))+
+  geom_col(fill="deepskyblue4")+
+  labs(title = "Life Expentency from 1952 to 2007", x="Year", y="Life Expentency ")
+```
+
+**3. How do the distributions of life expectancy compare for the years 1952 and 2007?**
+```{r}
+gapminder %>% 
+  filter(year >= 1952 & year <= 2007) %>% 
+  arrange(year) %>% 
+  ggplot(aes(x=year, y= lifeExp, group = year ))+
+  geom_boxplot(fill="deepskyblue4")+
+  labs(title = "Distribution of Life Expentency from 1952 to 2007", x="Year", y="Life Expentency ")
+```
 **4. Your answer above doesn't tell the whole story since life expectancy varies by region. Make a summary that shows the min, mean, and max life expectancy by continent for all years represented in the data.**
+```{r}
+gapminder %>% 
+  count(continent)
+```
+
+
+```{r}
+gapminder %>% 
+  group_by(continent) %>% 
+  summarise(
+    continent_min = min(lifeExp),
+    continent_mean = mean(lifeExp),
+    continent_max = max(lifeExp)
+  )
+```
+```{r}
+gapminder %>% 
+  ggplot(aes(x=continent, y= lifeExp, fill= continent ))+
+  geom_boxplot(position = "dodge")+
+  labs(title = "Distribution of Life Expentency Between Continents", x="Continents", y="Life Expentency ")
+```
 
 **5. How has life expectancy changed between 1952-2007 for each continent?**
 
+```{r}
+gapminder2 %>% 
+  ggplot(aes(x=year, y= lifeExp, fill =continent))+
+  geom_boxplot(alpha = 0.5, position="dodge", width=1)+
+  coord_flip()+
+  labs(title = "Life Expentency from 1952 to 2007", y="Year", x="Life Expentency ")
+```
+
+
 **6. We are interested in the relationship between per capita GDP and life expectancy; i.e. does having more money help you live longer?**
+```{r}
+gapminder %>% 
+  ggplot(aes(y=gdpPercap, x=lifeExp))+
+  geom_point()+
+  geom_smooth(method = lm, se=F)+
+  labs(title="Life Expentancy vs per capita GDP", x="Life Expentancy", y="per capita GDP")
+```
 
 **7. Which countries have had the largest population growth since 1952?**
+```{r}
+gapminder2 %>% 
+  ggplot(aes(x=year, y = pop, group=country))+
+  geom_line()+
+  scale_y_log10()
+```
+```{r}
+overall_growth <- gapminder %>% 
+  filter(year == 1952 | year ==2007) %>% 
+  group_by(country) %>% 
+  summarise(
+    pop_growth = max(pop) - min(pop)
+  )
+overall_growth
+```
+```{r}
+overall_growth %>% 
+  slice_max(pop_growth, n =5)
+```
 
 **8. Use your results from the question above to plot population growth for the top five countries since 1952.**
+```{r}
+gapminder2 %>% 
+  filter(country == c("China", "India", "United States", "Indonesia", "Brazil")) %>% 
+  ggplot(aes(x=year, y=pop, group = country, color= country))+
+  geom_line()+
+  scale_y_log10()+
+  geom_point()+
+  labs(title="Population vs Year Between Top 5 Largest Growth Countries Since 1952")
+```
+```{r}
+gapminder2 %>% 
+  filter(country == c("China", "India", "United States", "Indonesia", "Brazil")) %>% 
+  ggplot(aes(x=year, y=pop, fill=country))+
+  geom_col(position = "dodge")+
+  scale_y_log10()
+```
 
 **9. How does per-capita GDP growth compare between these same five countries?**
-
+```{r}
+gapminder2 %>% 
+  filter(country == c("China", "India", "United States", "Indonesia", "Brazil")) %>% 
+  ggplot(aes(x=year, y=gdpPercap, group = country, color= country))+
+  geom_line()+
+  scale_y_log10()+
+  geom_point()+
+  labs(title="GDPperCap vs Year Between Top 5 Largest Growth Countries Since 1952")
+```
 **10. Make one plot of your choice that uses faceting!**
 
 ## Push your final code to GitHub!
