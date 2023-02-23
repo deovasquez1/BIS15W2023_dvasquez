@@ -62,7 +62,7 @@ life_history %>%
   summarize(mean_mass=mean(mass, na.rm=T))
 ```
 ```{r}
-options()
+options(scipen=999)#cancels scientific notation for the session
 ```
 
 

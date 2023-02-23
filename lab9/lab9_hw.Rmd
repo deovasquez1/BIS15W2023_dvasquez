@@ -85,7 +85,7 @@ colleges %>%
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
 ```{r}
 colleges %>% 
-  slice_max(costt4_a, n = 1)
+  
 ```
 
 5. Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :>).

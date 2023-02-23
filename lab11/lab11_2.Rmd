@@ -42,7 +42,8 @@ options(scipen=999) #cancels the use of scientific notation for the session
 For this tutorial, we will use:  
 [Homerange](http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1). The data are from: Tamburello N, Cote IM, Dulvy NK (2015) Energy and the scaling of animal space use. The American Naturalist 186(2):196-211. http://dx.doi.org/10.1086/682070.  
 ```{r message=FALSE, warning=FALSE}
-homerange <- read_csv(here("data", "Tamburelloetal_HomeRangeDatabase.csv"))
+homerange <- read_csv(here("lab11", 
+"data", "Tamburelloetal_HomeRangeDatabase.csv"))
 ```
 
 ## ggplot themes
@@ -102,6 +103,10 @@ The default colors used by ggplot are often uninspiring. They don't make plots p
 Access the help for `RColorBrewer`.
 ```{r}
 ?RColorBrewer
+```
+```{r}
+brewer.pal(3, "RdGy")
+display.brewer.pal(3, "RdGy")
 ```
 
 The thing to notice is that there are three different palettes: 1) sequential, 2) diverging, and 3) qualitative. Within each of these there are several selections. You can bring up the colors by using `display.brewer.pal()`. Specify the number of colors that you want and the palette name.

@@ -53,7 +53,7 @@ Keep in mind, if the authors of the data represented NA's in another way, they w
 
 We also learned...
 ```{r}
-any_na(msleep)
+anyNA(msleep)
 ```
 
 What are we supposed to do with those? Unless you have a very small data frame, applying these functions is not helpful but we can use them in another way. Let's incorporate `is.na` into `summarize()`.
@@ -88,11 +88,11 @@ doi: 10.1890/15-0846.1 (URL: https://doi.org/10.1890/15-0846.1).
 
 1. Load the `amniota` data below and determine whether or not NA's are present. If they are present, how are they represented?
 ```{r}
-amniota <- readr::read_csv("data/amniota.csv")
+amniota <- readr::read_csv("homework/data/amniota.csv")
 ```
 
 ```{r}
-any_na(amniota)
+anyNA(amniota)
 ```
 
 ```{r}
@@ -164,7 +164,7 @@ For the following examples, we will use the `life_history` data for mammals. The
 
 Load the mammals life history data v2. 
 ```{r}
-life_history <- read_csv("data/mammal_lifehistories_v2.csv")
+life_history <- read_csv("homework/data/mammal_lifehistories_v2.csv")
 ```
 
 1. Do you see any NA's? Try using naniar.
@@ -182,7 +182,7 @@ life_history %>%
 ```{r}
 life_history %>% 
   na_if(-999) %>% 
-  miss_var_summary()
+  miss_var_summary(life_history)
 ```
 
 ## Wrap-up  

@@ -69,18 +69,12 @@ ggplot(data=iris, mapping = aes(x= Species, y= Petal.Length))+geom_boxplot()
 Notice that we have a nice background, labeled axes, and even a value range of our variables on the y-axis- but no plot. This is because we need to tell ggplot how we want our data represented. This is called the geometry or `geom()`. There are many types of `geom`, see the ggplot [cheatsheet](https://posit.co/resources/cheatsheets/).
 
 Here we specify that we want a boxplot, indicated by `geom_boxplot()`.
-```{r}
 
-```
 
 ## Practice
 1. Use the iris data to build a scatterplot that compares sepal length vs. sepal width. Use the cheat sheet or help to find the correct `geom_` for a scatterplot.
 ```{r}
 ggplot(data=iris, mapping = aes(x= Sepal.Length, y= Sepal.Width))+geom_point()
-```
-
-```{r}
-
 ```
 
 
@@ -92,7 +86,7 @@ Now that we have a general idea of the syntax, let's start by working with two c
 Reference: Tamburello N, Cote IM, Dulvy NK (2015) Energy and the scaling of animal space use. The American Naturalist 186(2):196-211. http://dx.doi.org/10.1086/682070.  
 Data: http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1  
 ```{r}
-homerange <- read_csv(here("data", "Tamburelloetal_HomeRangeDatabase.csv"))
+homerange <- read_csv(here("lab9", "data", "Tamburelloetal_HomeRangeDatabase.csv"))
 ```
 
 ## Practice

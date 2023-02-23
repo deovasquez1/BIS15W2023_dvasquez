@@ -101,7 +101,9 @@ homerange %>%
 
 Make this output more visual by making a plot...
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x= class, y = log10.mass))+
+  geom_boxplot()
 ```
 
 ## Practice
