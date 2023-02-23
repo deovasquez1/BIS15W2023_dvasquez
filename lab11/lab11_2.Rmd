@@ -87,7 +87,7 @@ ls("package:ggthemes")[grepl("theme_", ls("package:ggthemes"))]
 ```
 
 ```{r}
-p+ theme_igray()+
+p+ theme_stata()+
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 60, hjust=1))+
   labs(title = "Observations by Taxon in Homerange Data",
@@ -124,7 +124,15 @@ p+scale_fill_brewer(palette = "BuPu")+
        y= "n",
        fill= "Trophic Guild")
 ```
-
+```{r}
+p+scale_fill_brewer(palette = "BrBG")+
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 60, hjust=1))+
+  labs(title = "Observations by Taxon in Homerange Data",
+       x = NULL,
+       y= "n",
+       fill= "Trophic Guild")
+```
 ## Manually Setting Colors
 You can also use `paleteer` to build a custom palette for consistency. To access the `paleteer` collection, I add it to a new object.
 ```{r}
@@ -133,7 +141,7 @@ colors <- paletteer::palettes_d_names
 
 Now we can display the palettes. Assign the palette to `my_palette` and then build this base R bar plot. There are a lot of options; `paleteer` is a collection of popular palettes. I really like the [`ggsci` package] (https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html)
 ```{r}
-my_palette <- paletteer_d("ggprism::flames")
+my_palette <- paletteer_d("palettetown::charizard")
 ```
 
 ```{r}
@@ -164,12 +172,20 @@ homerange %>%
 ## Practice
 1. Revisit the relationship between mass and homerange using a scatterplot, but color the points by taxonomic class using a custom color theme.
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x = log10.mass, y = log10.hra, color = class)) +
+  geom_point()+
+  scale_colour_brewer(palette = 'BrBG')
+  
+  
 ```
 
 2. Build bar plots that show the representation by taxonomic class with carnivores and herbivores. Try using a color theme that matches your scatterplot to keep everything consistent.
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x = log10.mass, y = log10.hra, color = class)) +
+  geom_bar()+
+  scale_fill_brewer(values = my_palette)
 ```
 
 ## Faceting
@@ -210,7 +226,7 @@ The problem is that the plot becomes very busy. It is hard to interpret with eac
 ecosphere %>% 
   ggplot(aes(x=diet, y=log10_mass, fill=migratory_strategy))+ 
   geom_boxplot(alpha=0.4) + 
-  facet_wrap(~migratory_strategy, ncol=4)+
+  facet_wrap(~migratory_strategy, ncol=6)+
   theme(axis.text.x = element_text(angle = 60, hjust = 1))+
   labs(title = "Mass by Diet and Migratory Strategy",
        x = NULL,
@@ -265,14 +281,20 @@ ecosphere %>%
 ```
 
 ## Practice
-1. Build a faceted plot that shows a distribution of life expectancy by habitat type.
+1. Build a faceted plot that shows a distribution of log10mass by habitat type.
 ```{r}
-
+ecosphere %>% 
+  ggplot(aes(x= log10_mass))+
+    facet_grid(.~habitat)+
+  geom_density()
 ```
 
 2. Try the same plot as #1 above, but include life_expectancy~habitat.
 ```{r}
-
+ecosphere %>% 
+  ggplot(aes(x= log10_mass))+
+  facet_wrap(life_expectancy~habitat)+
+  geom_density()
 ```
 
 ## That's it, let's take a break!   
