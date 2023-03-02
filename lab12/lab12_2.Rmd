@@ -284,6 +284,40 @@ wolves %>%
   facet_wrap(~pop)
 ```
 
+```{r}
+library(shiny)
+
+ui <- dashboardPage(
+  
+  dashboardHeader(title = "Wolves"),
+  dashboardSidebar(disable = T),
+  dashboardBody(
+    fluidRow(
+      box(title = "Plot Options", width = 3,
+          selectInput("x", "Select X Variable", choices = c("sex"), selected = "sex")
+          ),
+      box(title = "Plot of Wolves Pop", width = 7,
+          plotOutput("plot", width = "600px", height = "500px")
+      )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$plot <- renderPlot({
+    wolves %>% 
+      filter(sex!="NA") %>% 
+      ggplot(aes(x=sex, fill=sex))+
+      geom_bar()+
+      facet_wrap(~pop)
+    
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
 ## Wrap-up  
 Please review the learning goals and be sure to use the code here as a reference when completing the homework.
 

@@ -36,7 +36,7 @@ For this assignment, we are going to use data from  [gapminder](https://www.gapm
 3. life_expectancy_years.csv  
 
 ```{r}
-population <- read_csv(here("midterm2", "data", "population_total.csv"))
+population <- read_csv(here("practice_midterm2", "data", "population_total.csv"))
 ```
 
 ```{r}
