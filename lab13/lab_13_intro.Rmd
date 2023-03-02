@@ -1,0 +1,67 @@
+---
+title: "Lab 13 Intro"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("jpeg")
+```
+
+## Load the libraries
+```{r}
+library("janitor")
+library("tidyverse")
+library("shiny")
+```
+
+## Warm-up
+For this exercise, let's use some data on elephants. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
+
+1. Load the data and evaluate its structure. Clean as appropriate.
+```{r}
+elephants <- read_csv("data/ElephantsMF.csv") %>% 
+  janitor::clean_names()
+```
+```{r}
+names(elephants)
+```
+
+2. Make a simple shiny app that produces a scatterplot of age vs. height with reactivity assigned to sex. Make sure to include a title and try to incorporate the reference to the data.
+
+```{r, eval=F, echo=T}
+library(shiny)
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Elephants"),
+  dashboardSidebar(disable = T),
+  dashboardBody(
+  fluidRow(
+    box(title = "Plot Options", width = 3,
+  radioButtons("x", "Select Year", choices = c("M", "F"), 
+               selected = "M"),
+    hr(),
+      helpText("Reference: Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), 'Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana),' Biology Letters, 9: 20130011."),
+    ),
+  box(title = "Elephant Age vs Height by Sex", width = 9,
+  plotOutput("plot", width = "600px", height = "500px")
+      )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  
+   output$plot <- renderPlot({
+       filter(elephants, sex == input$x) %>% 
+       ggplot(aes(x = age, y= height))+
+       geom_point(alpha = 0.75)+
+       theme_light(base_size = 18)+
+       labs(x= "Age", y= "Height")
+   })
+  session$onSessionEnded(stopApp)
+}
+
+shinyApp(ui, server)
+```
