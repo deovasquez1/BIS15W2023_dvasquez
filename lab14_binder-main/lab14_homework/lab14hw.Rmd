@@ -1,9 +1,11 @@
 ---
 title: "Lab 14 Homework"
-author: "Your Name Here"
+author: "Deon Vasquez"
 date: "`r Sys.Date()`"
 output:
-  html_document: 
+  pdf_document:
+    toc: yes
+  html_document:
     theme: spacelab
     toc: yes
     toc_float: yes
@@ -20,32 +22,41 @@ Answer the following questions in RMarkdown. Please embed all of your code and p
 
 ## Questions
 
-1. Look up 'Data Scientist' at https://www.bls.gov/. What degree is required for this career? Is it a growing occupation?  
+#1. Look up 'Data Scientist' at https://www.bls.gov/. What degree is required for this career? Is it a growing occupation?  
 
+A bachelor's degree such as mathematics, statistics, computer science, business, and engineering. It is projected to grow 36% from 2021 to 2031. 
 
-2. How would you describe your data science skills on a resume for a job application? Write a blurb that reflects the skills you have learned in this course. 
+#2. How would you describe your data science skills on a resume for a job application? Write a blurb that reflects the skills you have learned in this course. 
 
+Dedicated data scientist with 'x' years experience for company 'y'. Strong analytical skills demonstrated through 'z' years using R Studio and Excel, along with a background in Statistics. Persuaded many stakeholders to financial success through effective data visualization and constantly eager to work with a team to resolve difficult tasks in developing models. 
 
-3. What are your current career interests, and how could your R skills support that career path? (hint: this might be good content for your LinkedIn profile ;)
+#3. What are your current career interests, and how could your R skills support that career path? (hint: this might be good content for your LinkedIn profile ;)
 
+My career interest are to go into the microbiology field as a lab technician and my R skills would support that career path by describing how I could gather and analyze the data. With the knowledge I've gained, I can also do data clean up with another team's data and develop clean presentations about the data.
 
-4. What about this course has been the most difficult for you? What has been the most rewarding?
+#4. What about this course has been the most difficult for you? What has been the most rewarding?
 
+Most likely the course was difficult in class because it was 2 hours long sitting at a computer, and I do that at home anyway for more than 2 hours. Additionally, some problems like one of the last ones on the second midterm and later homework we're very difficult and required a lot of thinking. However, I enjoyed this instead of mostly copying from the lecture and changing the code to be used into my homework. I found it rewarding to solve problems that we're difficult but at the same time we had resources to look back on and our partners to help us out. 
 
-5. What do you wish you had known, or what skills do you wish you had, before taking this class.
+#5. What do you wish you had known, or what skills do you wish you had, before taking this class.
 
+Not really much. Besides a bit of basic statistical knowledge, not much computer skills were needed. It was fairly simple to get into.  
 
-6. If we had 1 more lab in this class, what would you have liked to learn more about?
+#6. If we had 1 more lab in this class, what would you have liked to learn more about?
 
+I would say more graphs and how we could use this code or results we found to be used in a presentation.
 
-7. Now that you have (almost!) completed this course, do you plan to persue further data or computer science skills? What do you plan to do?
+#7. Now that you have (almost!) completed this course, do you plan to persue further data or computer science skills? What do you plan to do?
 
+I would like to further my interest of data science in the biological field because I want to work with genomics (especially metagenomics) along with my microbiology interests. 
 
-8. How important was working with a partner to your success in this class? If this class were transitioned to an online format, how do you think that would affect your understanding?
+#8. How important was working with a partner to your success in this class? If this class were transitioned to an online format, how do you think that would affect your understanding?
 
+If this class was online, I do not think I would have done well. Instead, I would have slacked off much more. Having a person beside you while working on assignments or the project was crtical for my success. It allowed me to learn from them and also we get to teach each other how the code works.
 
-9. Did you complete the class evaluation? Please complete the class evaluation using the link provided in the announcements. Your feedback is very important and we appreciate your time.
+#9. Did you complete the class evaluation? Please complete the class evaluation using the link provided in the announcements. Your feedback is very important and we appreciate your time.
 
+Not yet. I'll do it now
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 
